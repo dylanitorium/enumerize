@@ -1,0 +1,32 @@
+{
+  "name": "enumerize",
+  "version": "0.0.1",
+  "description": "Turn your object into something more useful",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "babel src --out-dir dist --presets es2015 "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylanitorium/enumerize.git"
+  },
+  "keywords": [
+    "objec"
+  ],
+  "author": "Dylan Sweetensen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylanitorium/enumerize/issues"
+  },
+  "homepage": "https://github.com/dylanitorium/enumerize#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}
