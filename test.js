@@ -8,7 +8,6 @@ describe('enumerize', () => {
     two: 'two',
   };
 
-
   const testObject2 = {
     one: {
       one: 'one',

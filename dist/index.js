@@ -45,30 +45,38 @@ var Enumerized = function () {
 
   _createClass(Enumerized, [{
     key: 'allMatch',
+
+
+    /**
+     *
+     * @param parameters
+     * @returns {boolean}
+     */
     value: function allMatch(parameters) {
       var _this = this;
 
       var findKeys = Enumerized.getKeys(parameters);
-
       return findKeys.every(function (findKey) {
         return parameters[findKey] === _this.object[findKey];
       });
     }
+
+    /**
+     *
+     * @param parameters
+     * @returns {*|boolean}
+     */
+
   }, {
     key: 'allChildrenMatch',
     value: function allChildrenMatch(parameters) {
-      console.log(this.values.length);
-      var val = this.values.every(function (child) {
+      return this.values.every(function (child) {
         if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) !== 'object') {
           return false;
         }
 
         return enumerize(child).allMatch(parameters);
       });
-
-      alert(val);
-
-      return val;
     }
   }], [{
     key: 'getKeys',
