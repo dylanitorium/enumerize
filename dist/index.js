@@ -31,9 +31,9 @@ var Enumerized = function () {
       throw new Error('Enumerized.constructor must be passed an object');
     }
 
-    this.object = object;
-    this.keys = Enumerized.getKeys(object);
-    this.values = Enumerized.getValues(object);
+    this._object = object;
+    this._keys = Enumerized.getKeys(object);
+    this._values = Enumerized.getValues(object);
   }
 
   /**
@@ -57,7 +57,7 @@ var Enumerized = function () {
 
       var findKeys = Enumerized.getKeys(parameters);
       return findKeys.every(function (findKey) {
-        return parameters[findKey] === _this.object[findKey];
+        return parameters[findKey] === _this._object[findKey];
       });
     }
 
@@ -70,7 +70,7 @@ var Enumerized = function () {
   }, {
     key: 'allChildrenMatch',
     value: function allChildrenMatch(parameters) {
-      return this.values.every(function (child) {
+      return this._values.every(function (child) {
         if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) !== 'object') {
           return false;
         }
@@ -81,7 +81,7 @@ var Enumerized = function () {
   }], [{
     key: 'getKeys',
     value: function getKeys(object) {
-      return Object.keys(object);
+      return Object._keys(object);
     }
 
     /**
@@ -93,7 +93,7 @@ var Enumerized = function () {
   }, {
     key: 'getValues',
     value: function getValues(object) {
-      return Object.values(object);
+      return Object._values(object);
     }
   }]);
 

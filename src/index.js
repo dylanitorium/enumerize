@@ -14,9 +14,13 @@ class Enumerized {
       throw new Error('Enumerized.constructor must be passed an object');
     }
 
-    this.object = object;
-    this.keys = Enumerized.getKeys(object);
-    this.values = Enumerized.getValues(object);
+    this._object = object;
+    this._keys = Enumerized.getKeys(object);
+    this._values = Enumerized.getValues(object);
+
+    this._keys.forEach((key) => {
+      this[key] = this._object[key];
+    });
   }
 
   /**
@@ -44,7 +48,7 @@ class Enumerized {
    */
   allMatch(parameters) {
     const findKeys = Enumerized.getKeys(parameters);
-    return findKeys.every(findKey => (parameters[findKey] === this.object[findKey]));
+    return findKeys.every(findKey => (parameters[findKey] === this._object[findKey]));
   }
 
   /**
@@ -53,7 +57,7 @@ class Enumerized {
    * @returns {*|boolean}
    */
   allChildrenMatch(parameters) {
-    return this.values.every((child) => {
+    return this._values.every((child) => {
       if (typeof child !== 'object') {
         return false;
       }

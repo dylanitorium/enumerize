@@ -30,53 +30,58 @@ describe('enumerize', () => {
     }
   };
 
-  it (' | allMatch | correctly returns true when matching itself', () => {
+  it ('provides access to original properties', () => {
+    const result = enumerize(testObject);
+    return expect(result.one).to.equal('one');
+  });
+
+  it ('allMatch() correctly returns true when matching itself', () => {
     const result = enumerize(testObject).allMatch(testObject);
     return expect(result).to.be.true;
   });
 
-  it (' | allMatch | correctly returns true when macthing one property', () => {
+  it ('allMatch() correctly returns true when macthing one property', () => {
     const result = enumerize(testObject).allMatch({ one: 'one' });
     return expect(result).to.be.true;
   });
 
-  it (' | allMatch | correctly returns true when empty object is passed', () => {
+  it ('allMatch() correctly returns true when empty object is passed', () => {
     const result = enumerize(testObject).allMatch({ });
     return expect(result).to.be.true;
   });
 
-  it (' | allMatch | correctly returns false when no parameters match', () => {
+  it ('allMatch() correctly returns false when no parameters match', () => {
     const result = enumerize(testObject).allMatch({ one: 'two' });
     return expect(result).to.be.false;
   });
 
-  it (' | allMatch | correctly returns false when at least one parameter does not match', () => {
+  it ('allMatch() correctly returns false when at least one parameter does not match', () => {
     const result = enumerize(testObject).allMatch({ one: 'two', two: 'two' });
     return expect(result).to.be.false;
   });
 
-  it (' | allChildrenMatch | correctly returns true when all parameters of children match', () => {
+  it ('allChildrenMatch() correctly returns true when all parameters of children match', () => {
     const result = enumerize(testObject2).allChildrenMatch(testObject);
     return expect(result).to.be.true;
   });
 
-  it (' | allChildrenMatch | correctly returns true when only one parameter needs matching', () => {
+  it ('allChildrenMatch() correctly returns true when only one parameter needs matching', () => {
     const result = enumerize(testObject2).allChildrenMatch({ one: 'one' });
     return expect(result).to.be.true;
   });
 
-  it (' | allChildrenMatch | correctly returns true when only one parameter needs matching ' +
+  it ('allChildrenMatch() correctly returns true when only one parameter needs matching ' +
     'but children are not idenitical', () => {
     const result = enumerize(testObject3).allChildrenMatch({ one: 'one' });
     return expect(result).to.be.true;
   });
 
-  it (' | allChildrenMatch | correctly returns false one or more children do not match parameters', () => {
+  it ('allChildrenMatch() correctly returns false one or more children do not match parameters', () => {
     const result = enumerize(testObject3).allChildrenMatch({ two: 'two' });
     return expect(result).to.be.false;
   });
 
-  it (' | allChildrenMatch | correctly returns false when no children match parammeters', () => {
+  it ('allChildrenMatch() correctly returns false when no children match parammeters', () => {
     const result = enumerize(testObject3).allChildrenMatch({ one: 'two' });
     return expect(result).to.be.false;
   });
