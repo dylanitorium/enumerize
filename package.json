@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
-    "build": "babel src --out-dir dist"
+    "build": "babel src --out-dir dist",
+    "release": "npm run test && npm run build && git add . && git commit -m 'building src for release' && npm version patch && npm publish"
   },
   "repository": {
     "type": "git",

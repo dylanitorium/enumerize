@@ -25,6 +25,8 @@ var Enumerized = function () {
    * @param object
    */
   function Enumerized(object) {
+    var _this = this;
+
     _classCallCheck(this, Enumerized);
 
     if ((typeof object === 'undefined' ? 'undefined' : _typeof(object)) !== 'object') {
@@ -34,6 +36,10 @@ var Enumerized = function () {
     this._object = object;
     this._keys = Enumerized.getKeys(object);
     this._values = Enumerized.getValues(object);
+
+    this._keys.forEach(function (key) {
+      _this[key] = _this._object[key];
+    });
   }
 
   /**
@@ -53,11 +59,11 @@ var Enumerized = function () {
      * @returns {boolean}
      */
     value: function allMatch(parameters) {
-      var _this = this;
+      var _this2 = this;
 
       var findKeys = Enumerized.getKeys(parameters);
       return findKeys.every(function (findKey) {
-        return parameters[findKey] === _this._object[findKey];
+        return parameters[findKey] === _this2._object[findKey];
       });
     }
 
@@ -81,7 +87,7 @@ var Enumerized = function () {
   }], [{
     key: 'getKeys',
     value: function getKeys(object) {
-      return Object._keys(object);
+      return Object.keys(object);
     }
 
     /**
@@ -93,7 +99,7 @@ var Enumerized = function () {
   }, {
     key: 'getValues',
     value: function getValues(object) {
-      return Object._values(object);
+      return Object.values(object);
     }
   }]);
 
