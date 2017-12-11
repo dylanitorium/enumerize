@@ -65,6 +65,17 @@ class Enumerized {
       return enumerize(child).allMatch(parameters);
     });
   }
+
+  /**
+   *
+   * @param callback
+   */
+  forEach(callback) {
+    this._keys.forEach((key) => {
+      const value = this._object[key];
+      callback(value, key);
+    });
+  }
 }
 
 export default enumerize;

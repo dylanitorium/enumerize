@@ -86,5 +86,15 @@ describe('enumerize', () => {
     return expect(result).to.be.false;
   });
 
+  it('forEach() returns the key and value for each property in the object', () => {
+    const result = {};
+
+    enumerize(testObject).forEach((value, key) => {
+      result[key] = value;
+    });
+
+    return expect(result).to.deep.equal(testObject);
+  });
+
 });
 
