@@ -19,7 +19,8 @@ class Enumerized {
     this._values = Enumerized.getValues(object);
 
     this._keys.forEach((key) => {
-      this[key] = this._object[key];
+      const property = this._object[key];
+      this[key] = (typeof property === 'object') ? enumerize(property) : property;
     });
   }
 
@@ -39,6 +40,14 @@ class Enumerized {
    */
   static getValues(object) {
     return Object.values(object);
+  }
+
+  /**
+   *
+   * @returns {*}
+   */
+  getValues() {
+    return this._values;
   }
 
   /**
@@ -76,6 +85,21 @@ class Enumerized {
       callback(value, key);
     });
   }
+
+  /**
+   *
+   * @param keys
+   * @returns {*}
+   */
+  keysMatch(keys) {
+    const matches = {};
+    keys.filter(key => this._keys.includes(key)).forEach((key) => {
+      matches[key] = this._object[key];
+    });
+    return enumerize(matches);
+  }
+
+
 }
 
 export default enumerize;
