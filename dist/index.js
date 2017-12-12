@@ -38,7 +38,8 @@ var Enumerized = function () {
     this._values = Enumerized.getValues(object);
 
     this._keys.forEach(function (key) {
-      _this[key] = _this._object[key];
+      var property = _this._object[key];
+      _this[key] = (typeof property === 'undefined' ? 'undefined' : _typeof(property)) === 'object' ? enumerize(property) : property;
     });
   }
 
@@ -50,14 +51,25 @@ var Enumerized = function () {
 
 
   _createClass(Enumerized, [{
-    key: 'allMatch',
+    key: 'getValues',
 
+
+    /**
+     *
+     * @returns {*}
+     */
+    value: function getValues() {
+      return this._values;
+    }
 
     /**
      *
      * @param parameters
      * @returns {boolean}
      */
+
+  }, {
+    key: 'allMatch',
     value: function allMatch(parameters) {
       var _this2 = this;
 
@@ -83,6 +95,42 @@ var Enumerized = function () {
 
         return enumerize(child).allMatch(parameters);
       });
+    }
+
+    /**
+     *
+     * @param callback
+     */
+
+  }, {
+    key: 'forEach',
+    value: function forEach(callback) {
+      var _this3 = this;
+
+      this._keys.forEach(function (key) {
+        var value = _this3._object[key];
+        callback(value, key);
+      });
+    }
+
+    /**
+     *
+     * @param keys
+     * @returns {*}
+     */
+
+  }, {
+    key: 'keysMatch',
+    value: function keysMatch(keys) {
+      var _this4 = this;
+
+      var matches = {};
+      keys.filter(function (key) {
+        return _this4._keys.includes(key);
+      }).forEach(function (key) {
+        matches[key] = _this4._object[key];
+      });
+      return enumerize(matches);
     }
   }], [{
     key: 'getKeys',
