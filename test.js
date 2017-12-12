@@ -96,5 +96,15 @@ describe('enumerize', () => {
     return expect(result).to.deep.equal(testObject);
   });
 
+  it('getValues() returns the values of the object', () => {
+    const result = enumerize(testObject).getValues();
+    return expect(result).to.deep.equal(['one', 'two']);
+  });
+
+  it('keysMatch() returns only an enumerized version of the keys the are contained in the passed array', () => {
+    const result = enumerize(testObject).keysMatch(['one']);
+    return expect(result).to.deep.equal(enumerize({ one: 'one' }));
+  });
+
 });
 
