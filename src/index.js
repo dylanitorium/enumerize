@@ -10,7 +10,7 @@ class Enumerized {
    * @param object
    */
   constructor(object) {
-    if (typeof object !== 'object') {
+    if (object === null || typeof object !== 'object') {
       throw new Error('Enumerized.constructor must be passed an object');
     }
 

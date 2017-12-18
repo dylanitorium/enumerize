@@ -30,6 +30,11 @@ describe('enumerize', () => {
     }
   };
 
+  it ('to throw an error before trying to extract keys', () => {
+      const createFromNull = () => enumerize(null);
+      expect(createFromNull).to.throw('Enumerized.constructor');
+  });
+
   it ('provides access to original properties', () => {
     const result = enumerize(testObject);
     return expect(result.one).to.equal('one');
