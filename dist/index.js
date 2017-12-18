@@ -29,7 +29,7 @@ var Enumerized = function () {
 
     _classCallCheck(this, Enumerized);
 
-    if ((typeof object === 'undefined' ? 'undefined' : _typeof(object)) !== 'object') {
+    if (object === null || (typeof object === 'undefined' ? 'undefined' : _typeof(object)) !== 'object') {
       throw new Error('Enumerized.constructor must be passed an object');
     }
 
