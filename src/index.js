@@ -11,7 +11,6 @@ class Enumerized {
    */
   constructor(object) {
     if (object === null || typeof object !== 'object') {
-      console.warn('Enumerized.constructor must be passed an object. Empty object created');
       object = {};
     }
 
@@ -43,6 +42,10 @@ class Enumerized {
     return Object.values(object);
   }
 
+  /**
+   *
+   * @returns {*}
+   */
   getKeys() {
     return this._keys;
   }
