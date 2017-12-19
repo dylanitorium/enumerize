@@ -30,9 +30,8 @@ describe('enumerize', () => {
     }
   };
 
-  it ('to throw an error before trying to extract keys', () => {
-      const createFromNull = () => enumerize(null);
-      expect(createFromNull).to.throw('Enumerized.constructor');
+  it ('passing null to the constructor creates an empty object', () => {
+      expect(enumerize(null).getKeys().length).to.equal(0);
   });
 
   it ('provides access to original properties', () => {
