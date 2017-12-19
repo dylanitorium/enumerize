@@ -143,6 +143,17 @@ var Enumerized = function () {
       });
       return enumerize(matches);
     }
+  }, {
+    key: 'map',
+    value: function map(callback) {
+      var _this5 = this;
+
+      var result = {};
+      this._keys.forEach(function (key) {
+        result[key] = callback(_this5._object[key]);
+      });
+      return result;
+    }
   }], [{
     key: 'getKeys',
     value: function getKeys(object) {
