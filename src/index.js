@@ -109,6 +109,15 @@ class Enumerized {
   }
 
 
+  map(callback) {
+    const result = {};
+    this._keys.forEach((key) => {
+      result[key] = callback(this._object[key]);
+    });
+    return result;
+  }
+
+
 }
 
 export default enumerize;
