@@ -30,7 +30,8 @@ var Enumerized = function () {
     _classCallCheck(this, Enumerized);
 
     if (object === null || (typeof object === 'undefined' ? 'undefined' : _typeof(object)) !== 'object') {
-      throw new Error('Enumerized.constructor must be passed an object');
+      console.warn('Enumerized.constructor must be passed an object. Empty object created');
+      object = {};
     }
 
     this._object = object;
@@ -51,13 +52,18 @@ var Enumerized = function () {
 
 
   _createClass(Enumerized, [{
-    key: 'getValues',
-
+    key: 'getKeys',
+    value: function getKeys() {
+      return this._keys;
+    }
 
     /**
      *
      * @returns {*}
      */
+
+  }, {
+    key: 'getValues',
     value: function getValues() {
       return this._values;
     }
