@@ -100,7 +100,7 @@ class Enumerized {
    * @param keys
    * @returns {*}
    */
-  keysMatch(keys) {
+  filterByKeys(keys) {
     const matches = {};
     keys.filter(key => this._keys.includes(key)).forEach((key) => {
       matches[key] = this._object[key];

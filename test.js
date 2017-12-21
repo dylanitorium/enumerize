@@ -105,8 +105,8 @@ describe('enumerize', () => {
     return expect(result).to.deep.equal(['one', 'two']);
   });
 
-  it('keysMatch() returns only an enumerized version of the keys the are contained in the passed array', () => {
-    const result = enumerize(testObject).keysMatch(['one']);
+  it('filterByKeys() returns only an enumerized version of the keys the are contained in the passed array', () => {
+    const result = enumerize(testObject).filterByKeys(['one']);
     return expect(result).to.deep.equal(enumerize({ one: 'one' }));
   });
 
