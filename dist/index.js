@@ -131,8 +131,8 @@ var Enumerized = function () {
      */
 
   }, {
-    key: 'keysMatch',
-    value: function keysMatch(keys) {
+    key: 'filterByKeys',
+    value: function filterByKeys(keys) {
       var _this4 = this;
 
       var matches = {};
