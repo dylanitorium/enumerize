@@ -17,6 +17,7 @@ class Enumerized {
     this._object = object;
     this._keys = Enumerized.getKeys(object);
     this._values = Enumerized.getValues(object);
+    this.length = this._keys.length;
 
     this._keys.forEach((key) => {
       const property = this._object[key];
